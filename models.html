@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="lang:clipboard.copy" content="Copy to clipboard">
+  <meta name="lang:clipboard.copied" content="Copied to clipboard">
+  <meta name="lang:search.language" content="en">
+  <meta name="lang:search.pipeline.stopwords" content="True">
+  <meta name="lang:search.pipeline.trimmer" content="True">
+  <meta name="lang:search.result.none" content="No matching documents">
+  <meta name="lang:search.result.one" content="1 matching document">
+  <meta name="lang:search.result.other" content="# matching documents">
+  <meta name="lang:search.tokenizer" content="[\s\-]+">
+
+  
+    <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&display=fallback" rel="stylesheet">
+
+    <style>
+      body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+    </style>
+  
+
+  <link rel="stylesheet" href="_static/stylesheets/application.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-palette.css"/>
+  <link rel="stylesheet" href="_static/stylesheets/application-fixes.css"/>
+  
+  <link rel="stylesheet" href="_static/fonts/material-icons.css"/>
+  
+  <meta name="theme-color" content="#3f51b5">
+  <script src="_static/javascripts/modernizr.js"></script>
+  
+  
+  
+    <title>yolort.models &#8212; yolort  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/material.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.svg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modules and utils for YOLOv5" href="yolov5.html" />
+    <link rel="prev" title="Deploying yolort on TVM" href="notebooks/export-relay-inference-tvm.html" />
+  
+   
+
+  </head>
+  <body dir=ltr
+        data-md-color-primary=blue data-md-color-accent=light-blue>
+  
+  <svg class="md-svg">
+    <defs data-children-count="0">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+      
+    </defs>
+  </svg>
+  
+  <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer">
+  <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search">
+  <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+  <a href="#models" tabindex="1" class="md-skip"> Skip to content </a>
+  <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="index.html" title="yolort  documentation"
+           class="md-header-nav__button md-logo">
+          
+              <img src="_static/yolort_logo_icon.png" height="26"
+                   alt="yolort documentation logo">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          <span class="md-header-nav__topic">YOLOv5 Runtime Stack</span>
+          <span class="md-header-nav__topic"> yolort.models </span>
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            <a href="https://github.com/zhiqwang/yolov5-rt-stack/" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    yolort
+  </div>
+</a>
+          </div>
+        </div>
+      
+      
+  
+  <script src="_static/javascripts/version_dropdown.js"></script>
+  <script>
+    var json_loc = ""versions.json"",
+        target_loc = "../",
+        text = "Versions";
+    $( document ).ready( add_version_dropdown(json_loc, target_loc, text));
+  </script>
+  
+
+    </div>
+  </nav>
+</header>
+
+  
+  <div class="md-container">
+    
+    
+    
+  <nav class="md-tabs" data-md-component="tabs">
+    <div class="md-tabs__inner md-grid">
+      <ul class="md-tabs__list">
+          <li class="md-tabs__item"><a href="index.html" class="md-tabs__link">yolort  documentation</a></li>
+      </ul>
+    </div>
+  </nav>
+    <main class="md-main">
+      <div class="md-main__inner md-grid" data-md-component="container">
+        
+          <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="index.html" title="yolort documentation" class="md-nav__button md-logo">
+      
+        <img src="_static/yolort_logo_icon.png" alt=" logo" width="48" height="48">
+      
+    </a>
+    <a href="index.html"
+       title="yolort documentation">YOLOv5 Runtime Stack</a>
+  </label>
+    <div class="md-nav__source">
+      <a href="https://github.com/zhiqwang/yolov5-rt-stack/" title="Go to repository" class="md-source" data-md-source="github">
+
+    <div class="md-source__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="28" height="28">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    yolort
+  </div>
+</a>
+    </div>
+  
+  
+
+  
+  <ul class="md-nav__list">
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Getting Started</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="installation.html" class="md-nav__link">Install yolort</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Tutorials</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="notebooks/inference-pytorch-export-libtorch.html" class="md-nav__link">Intuition for yolort</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="notebooks/comparison-between-yolort-vs-yolov5.html" class="md-nav__link">What is the difference between yolort and yolov5</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="notebooks/how-to-align-with-ultralytics-yolov5.html" class="md-nav__link">How to align with ultralytics yolov5</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="notebooks/anchor-label-assignment-visualization.html" class="md-nav__link">Visualize the anchor-target assignment</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="notebooks/model-graph-visualization.html" class="md-nav__link">Visualize model graph</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">Deployment</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="notebooks/export-onnx-inference-onnxruntime.html" class="md-nav__link">Deploying yolort on ONNX Runtime</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="notebooks/onnx-graphsurgeon-inference-tensorrt.html" class="md-nav__link">Deploying yolort on TensorRT</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="notebooks/export-relay-inference-tvm.html" class="md-nav__link">Deploying yolort on TVM</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+      <span class="md-nav__link caption"><span class="caption-text">API Reference</span></span>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    <label class="md-nav__link md-nav__link--active" for="__toc"> yolort.models </label>
+    
+      <a href="#" class="md-nav__link md-nav__link--active">yolort.models</a>
+      
+        
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#models--page-root" class="md-nav__link">yolort.models</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#models-structure" class="md-nav__link">Models structure</a>
+        </li>
+        <li class="md-nav__item"><a href="#pre-trained-weights" class="md-nav__link">Pre-trained weights</a>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+      <ul class="md-nav__list"> 
+    <li class="md-nav__item">
+    
+    
+      <a href="#models-structure" class="md-nav__link">Models structure</a>
+      
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="#pre-trained-weights" class="md-nav__link">Pre-trained weights</a>
+      
+    
+    </li></ul>
+    
+    </li>
+    <li class="md-nav__item">
+    
+    
+      <a href="yolov5.html" class="md-nav__link">Modules and utils for YOLOv5</a>
+      
+    
+    </li>
+  </ul>
+  
+
+</nav>
+              </div>
+            </div>
+          </div>
+          <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+            <div class="md-sidebar__scrollwrap">
+              <div class="md-sidebar__inner">
+                
+<nav class="md-nav md-nav--secondary">
+    <label class="md-nav__title" for="__toc">Contents</label>
+  <ul class="md-nav__list" data-md-scrollfix="">
+        <li class="md-nav__item"><a href="#models--page-root" class="md-nav__link">yolort.models</a><nav class="md-nav">
+              <ul class="md-nav__list">
+        <li class="md-nav__item"><a href="#models-structure" class="md-nav__link">Models structure</a>
+        </li>
+        <li class="md-nav__item"><a href="#pre-trained-weights" class="md-nav__link">Pre-trained weights</a>
+        </li></ul>
+            </nav>
+        </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        
+        <div class="md-content">
+          <article class="md-content__inner md-typeset" role="main">
+            
+  <section id="yolort-models">
+<span id="models"></span><h1 id="models--page-root">yolort.models<a class="headerlink" href="#models--page-root" title="Permalink to this headline">¶</a></h1>
+<section id="models-structure">
+<h2 id="models-structure">Models structure<a class="headerlink" href="#models-structure" title="Permalink to this headline">¶</a></h2>
+<p>The models expect a list of <code class="docutils literal notranslate"><span class="pre">Tensor[C,</span> <span class="pre">H,</span> <span class="pre">W]</span></code>, in the range <code class="docutils literal notranslate"><span class="pre">0-1</span></code>.
+The models internally resize the images but the behaviour varies depending
+on the model. Check the constructor of the models for more information.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="yolort.models.YOLOv5">
+<span class="sig-prename descclassname"><span class="pre">yolort.models.</span></span><span class="sig-name descname"><span class="pre">YOLOv5</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arch</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">torch.nn.modules.module.Module</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretrained</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">progress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(640,</span> <span class="pre">640)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size_divisible</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixed_shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_color</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">114</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">→</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/yolort/models/yolov5.html#YOLOv5"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yolort.models.YOLOv5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapping the pre-processing (<cite>LetterBox</cite>) into the YOLO models.</p>
+<p>The input to the model is expected to be a list of tensors, each of shape [C, H, W], one for each
+image, and should be in 0-1 range. Different images can have different sizes but they will be resized
+to a fixed size that maintains the aspect ratio before passing it to the backbone.</p>
+<p>The behavior of the model changes depending if it is in training or evaluation mode.</p>
+<p>During training, the model expects both the input tensors, as well as a targets (list of dictionary),
+containing:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>boxes (<code class="docutils literal notranslate"><span class="pre">FloatTensor[N,</span> <span class="pre">4]</span></code>): the ground-truth boxes in <code class="docutils literal notranslate"><span class="pre">[x1,</span> <span class="pre">y1,</span> <span class="pre">x2,</span> <span class="pre">y2]</span></code> format, with
+<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">x1</span> <span class="pre">&lt;</span> <span class="pre">x2</span> <span class="pre">&lt;=</span> <span class="pre">W</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">y1</span> <span class="pre">&lt;</span> <span class="pre">y2</span> <span class="pre">&lt;=</span> <span class="pre">H</span></code>.</p></li>
+<li><p>labels (Int64Tensor[N]): the class label for each ground-truth box</p></li>
+</ul>
+</div></blockquote>
+<p>The model returns a Dict[Tensor] during training, containing the classification and regression
+losses.</p>
+<p>During inference, the model requires only the input tensors, and returns the post-processed
+predictions as a List[Dict[Tensor]], one for each input image. The fields of the Dict are as
+follows, where <code class="docutils literal notranslate"><span class="pre">N</span></code> is the number of detections:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>boxes (<code class="docutils literal notranslate"><span class="pre">FloatTensor[N,</span> <span class="pre">4]</span></code>): the predicted boxes in <code class="docutils literal notranslate"><span class="pre">[x1,</span> <span class="pre">y1,</span> <span class="pre">x2,</span> <span class="pre">y2]</span></code> format, with
+<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">x1</span> <span class="pre">&lt;</span> <span class="pre">x2</span> <span class="pre">&lt;=</span> <span class="pre">W</span></code> and <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">y1</span> <span class="pre">&lt;</span> <span class="pre">y2</span> <span class="pre">&lt;=</span> <span class="pre">H</span></code>.</p></li>
+<li><p>labels (Int64Tensor[N]): the predicted labels for each detection</p></li>
+<li><p>scores (Tensor[N]): the scores for each detection</p></li>
+</ul>
+</div></blockquote>
+<p class="rubric">Example</p>
+<p>Demo pipeline for YOLOv5 Inference.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">yolort.models</span> <span class="kn">import</span> <span class="n">YOLOv5</span>
+
+<span class="c1"># Load the yolov5s version 6.0 models</span>
+<span class="n">arch</span> <span class="o">=</span> <span class="s1">'yolov5_darknet_pan_s_r60'</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLOv5</span><span class="p">(</span><span class="n">arch</span><span class="o">=</span><span class="n">arch</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">score_thresh</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="c1"># Perform inference on an image file</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s1">'bus.jpg'</span><span class="p">)</span>
+<span class="c1"># Perform inference on a list of image files</span>
+<span class="n">predictions2</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="s1">'bus.jpg'</span><span class="p">,</span> <span class="s1">'zidane.jpg'</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We also support loading the custom checkpoints trained from ultralytics/yolov5</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">yolort.models</span> <span class="kn">import</span> <span class="n">YOLOv5</span>
+
+<span class="c1"># Your trained checkpoint from ultralytics</span>
+<span class="n">checkpoint_path</span> <span class="o">=</span> <span class="s1">'yolov5n.pt'</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLOv5</span><span class="o">.</span><span class="n">load_from_yolov5</span><span class="p">(</span><span class="n">checkpoint_path</span><span class="p">,</span> <span class="n">score_thresh</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="c1"># Perform inference on an image file</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="s1">'bus.jpg'</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>arch</strong> (<em>string</em>) – YOLO model architecture. Default: None</p></li>
+<li><p><strong>model</strong> (<em>nn.Module</em>) – YOLO model. Default: None</p></li>
+<li><p><strong>num_classes</strong> (<em>int</em>) – number of output classes of the model (doesn’t including
+background). Default: 80</p></li>
+<li><p><strong>pretrained</strong> (<em>bool</em>) – If true, returns a model pre-trained on COCO train2017</p></li>
+<li><p><strong>progress</strong> (<em>bool</em>) – If True, displays a progress bar of the download to stderr</p></li>
+<li><p><strong>size</strong> – (Tuple[int, int]): the minimum and maximum size of the image to be rescaled.
+Default: (640, 640)</p></li>
+<li><p><strong>size_divisible</strong> (<em>int</em>) – stride of the models. Default: 32</p></li>
+<li><p><strong>fixed_shape</strong> (<em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>optional</em>) – Padding mode for letterboxing. If set to <cite>True</cite>,
+the image will be padded to shape <cite>fixed_shape</cite> if specified. Instead the image will
+be padded to a minimum rectangle to match <cite>min_size / max_size</cite> and each of its edges
+is divisible by <cite>size_divisible</cite> if it is not specified. Default: None</p></li>
+<li><p><strong>fill_color</strong> (<em>int</em>) – fill value for padding. Default: 114</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</section>
+<section id="pre-trained-weights">
+<h2 id="pre-trained-weights">Pre-trained weights<a class="headerlink" href="#pre-trained-weights" title="Permalink to this headline">¶</a></h2>
+<p>The pre-trained models return the predictions of the following classes:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">COCO_INSTANCE_CATEGORY_NAMES</span> <span class="o">=</span> <span class="p">[</span>
+   <span class="s1">'person'</span><span class="p">,</span> <span class="s1">'bicycle'</span><span class="p">,</span> <span class="s1">'car'</span><span class="p">,</span> <span class="s1">'motorcycle'</span><span class="p">,</span> <span class="s1">'airplane'</span><span class="p">,</span> <span class="s1">'bus'</span><span class="p">,</span>
+   <span class="s1">'train'</span><span class="p">,</span> <span class="s1">'truck'</span><span class="p">,</span> <span class="s1">'boat'</span><span class="p">,</span> <span class="s1">'traffic light'</span><span class="p">,</span> <span class="s1">'fire hydrant'</span><span class="p">,</span> <span class="s1">'stop sign'</span><span class="p">,</span>
+   <span class="s1">'parking meter'</span><span class="p">,</span> <span class="s1">'bench'</span><span class="p">,</span> <span class="s1">'bird'</span><span class="p">,</span> <span class="s1">'cat'</span><span class="p">,</span> <span class="s1">'dog'</span><span class="p">,</span> <span class="s1">'horse'</span><span class="p">,</span> <span class="s1">'sheep'</span><span class="p">,</span> <span class="s1">'cow'</span><span class="p">,</span>
+   <span class="s1">'elephant'</span><span class="p">,</span> <span class="s1">'bear'</span><span class="p">,</span> <span class="s1">'zebra'</span><span class="p">,</span> <span class="s1">'giraffe'</span><span class="p">,</span> <span class="s1">'backpack'</span><span class="p">,</span> <span class="s1">'umbrella'</span><span class="p">,</span>
+   <span class="s1">'handbag'</span><span class="p">,</span> <span class="s1">'tie'</span><span class="p">,</span> <span class="s1">'suitcase'</span><span class="p">,</span> <span class="s1">'frisbee'</span><span class="p">,</span> <span class="s1">'skis'</span><span class="p">,</span> <span class="s1">'snowboard'</span><span class="p">,</span> <span class="s1">'sports ball'</span><span class="p">,</span>
+   <span class="s1">'kite'</span><span class="p">,</span> <span class="s1">'baseball bat'</span><span class="p">,</span> <span class="s1">'baseball glove'</span><span class="p">,</span> <span class="s1">'skateboard'</span><span class="p">,</span> <span class="s1">'surfboard'</span><span class="p">,</span>
+   <span class="s1">'tennis racket'</span><span class="p">,</span> <span class="s1">'bottle'</span><span class="p">,</span> <span class="s1">'wine glass'</span><span class="p">,</span> <span class="s1">'cup'</span><span class="p">,</span> <span class="s1">'fork'</span><span class="p">,</span> <span class="s1">'knife'</span><span class="p">,</span> <span class="s1">'spoon'</span><span class="p">,</span> <span class="s1">'bowl'</span><span class="p">,</span>
+   <span class="s1">'banana'</span><span class="p">,</span> <span class="s1">'apple'</span><span class="p">,</span> <span class="s1">'sandwich'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span> <span class="s1">'broccoli'</span><span class="p">,</span> <span class="s1">'carrot'</span><span class="p">,</span> <span class="s1">'hot dog'</span><span class="p">,</span> <span class="s1">'pizza'</span><span class="p">,</span>
+   <span class="s1">'donut'</span><span class="p">,</span> <span class="s1">'cake'</span><span class="p">,</span> <span class="s1">'chair'</span><span class="p">,</span> <span class="s1">'couch'</span><span class="p">,</span> <span class="s1">'potted plant'</span><span class="p">,</span> <span class="s1">'bed'</span><span class="p">,</span> <span class="s1">'dining table'</span><span class="p">,</span>
+   <span class="s1">'toilet'</span><span class="p">,</span> <span class="s1">'tv'</span><span class="p">,</span> <span class="s1">'laptop'</span><span class="p">,</span> <span class="s1">'mouse'</span><span class="p">,</span> <span class="s1">'remote'</span><span class="p">,</span> <span class="s1">'keyboard'</span><span class="p">,</span> <span class="s1">'cell phone'</span><span class="p">,</span>
+   <span class="s1">'microwave'</span><span class="p">,</span> <span class="s1">'oven'</span><span class="p">,</span> <span class="s1">'toaster'</span><span class="p">,</span> <span class="s1">'sink'</span><span class="p">,</span> <span class="s1">'refrigerator'</span><span class="p">,</span> <span class="s1">'book'</span><span class="p">,</span> <span class="s1">'clock'</span><span class="p">,</span> <span class="s1">'vase'</span><span class="p">,</span>
+   <span class="s1">'scissors'</span><span class="p">,</span> <span class="s1">'teddy bear'</span><span class="p">,</span> <span class="s1">'hair drier'</span><span class="p">,</span> <span class="s1">'toothbrush'</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<dl class="py function">
+<dt class="sig sig-object py" id="yolort.models.yolov5n">
+<span class="sig-prename descclassname"><span class="pre">yolort.models.</span></span><span class="sig-name descname"><span class="pre">yolov5n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upstream_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r6.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_friendly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/yolort/models.html#yolov5n"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yolort.models.yolov5n" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>upstream_version</strong> (<em>str</em>) – model released by the upstream YOLOv5. Possible values
+are [“r6.0”]. Default: “r6.0”.</p></li>
+<li><p><strong>export_friendly</strong> (<em>bool</em>) – Deciding whether to use (ONNX/TVM) export friendly mode.
+Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="yolort.models.yolov5n6">
+<span class="sig-prename descclassname"><span class="pre">yolort.models.</span></span><span class="sig-name descname"><span class="pre">yolov5n6</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upstream_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r6.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_friendly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/yolort/models.html#yolov5n6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yolort.models.yolov5n6" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>upstream_version</strong> (<em>str</em>) – model released by the upstream YOLOv5. Possible values
+are [“r6.0”]. Default: “r6.0”.</p></li>
+<li><p><strong>export_friendly</strong> (<em>bool</em>) – Deciding whether to use (ONNX/TVM) export friendly mode.
+Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="yolort.models.yolov5s">
+<span class="sig-prename descclassname"><span class="pre">yolort.models.</span></span><span class="sig-name descname"><span class="pre">yolov5s</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upstream_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r6.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_friendly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/yolort/models.html#yolov5s"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yolort.models.yolov5s" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>upstream_version</strong> (<em>str</em>) – model released by the upstream YOLOv5. Possible values
+are [“r3.1”, “r4.0”, “r6.0”]. Default: “r6.0”.</p></li>
+<li><p><strong>export_friendly</strong> (<em>bool</em>) – Deciding whether to use (ONNX/TVM) export friendly mode.
+Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="yolort.models.yolov5s6">
+<span class="sig-prename descclassname"><span class="pre">yolort.models.</span></span><span class="sig-name descname"><span class="pre">yolov5s6</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upstream_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r6.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_friendly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/yolort/models.html#yolov5s6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yolort.models.yolov5s6" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>upstream_version</strong> (<em>str</em>) – model released by the upstream YOLOv5. Possible values
+are [“r6.0”]. Default: “r6.0”.</p></li>
+<li><p><strong>export_friendly</strong> (<em>bool</em>) – Deciding whether to use (ONNX/TVM) export friendly mode.
+Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="yolort.models.yolov5m">
+<span class="sig-prename descclassname"><span class="pre">yolort.models.</span></span><span class="sig-name descname"><span class="pre">yolov5m</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upstream_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r6.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_friendly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/yolort/models.html#yolov5m"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yolort.models.yolov5m" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>upstream_version</strong> (<em>str</em>) – model released by the upstream YOLOv5. Possible values
+are [“r3.1”, “r4.0”, “r6.0”]. Default: “r6.0”.</p></li>
+<li><p><strong>export_friendly</strong> (<em>bool</em>) – Deciding whether to use (ONNX/TVM) export friendly mode.
+Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="yolort.models.yolov5m6">
+<span class="sig-prename descclassname"><span class="pre">yolort.models.</span></span><span class="sig-name descname"><span class="pre">yolov5m6</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upstream_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r6.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_friendly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/yolort/models.html#yolov5m6"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yolort.models.yolov5m6" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>upstream_version</strong> (<em>str</em>) – model released by the upstream YOLOv5. Possible values
+are [“r6.0”]. Default: “r6.0”.</p></li>
+<li><p><strong>export_friendly</strong> (<em>bool</em>) – Deciding whether to use (ONNX/TVM) export friendly mode.
+Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="yolort.models.yolov5l">
+<span class="sig-prename descclassname"><span class="pre">yolort.models.</span></span><span class="sig-name descname"><span class="pre">yolov5l</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upstream_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r6.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_friendly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/yolort/models.html#yolov5l"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yolort.models.yolov5l" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>upstream_version</strong> (<em>str</em>) – model released by the upstream YOLOv5. Possible values
+are [“r3.1”, “r4.0”, “r6.0”]. Default: “r6.0”.</p></li>
+<li><p><strong>export_friendly</strong> (<em>bool</em>) – Deciding whether to use (ONNX/TVM) export friendly mode.
+Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="yolort.models.yolov5ts">
+<span class="sig-prename descclassname"><span class="pre">yolort.models.</span></span><span class="sig-name descname"><span class="pre">yolov5ts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upstream_version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'r4.0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">export_friendly</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/yolort/models.html#yolov5ts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#yolort.models.yolov5ts" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>upstream_version</strong> (<em>str</em>) – model released by the upstream YOLOv5. Possible values
+are “r4.0”. Default: “r4.0”.</p></li>
+<li><p><strong>export_friendly</strong> (<em>bool</em>) – Deciding whether to use (ONNX/TVM) export friendly mode.
+Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+</section>
+</section>
+
+
+          </article>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer class="md-footer">
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+          
+            <a href="notebooks/export-relay-inference-tvm.html" title="Deploying yolort on TVM"
+               class="md-flex md-footer-nav__link md-footer-nav__link--prev"
+               rel="prev">
+              <div class="md-flex__cell md-flex__cell--shrink">
+                <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+              </div>
+              <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+                <span class="md-flex__ellipsis">
+                  <span
+                      class="md-footer-nav__direction"> Previous </span> Deploying yolort on TVM </span>
+              </div>
+            </a>
+          
+          
+            <a href="yolov5.html" title="Modules and utils for YOLOv5"
+               class="md-flex md-footer-nav__link md-footer-nav__link--next"
+               rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title"><span
+                class="md-flex__ellipsis"> <span
+                class="md-footer-nav__direction"> Next </span> Modules and utils for YOLOv5 </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink"><i
+                class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          
+        </a>
+        
+      </nav>
+    </div>
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        <div class="md-footer-copyright">
+          <div class="md-footer-copyright__highlight">
+              &#169; Copyright 2022, yolort team.
+              
+          </div>
+            Created using
+            <a href="http://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+             and
+            <a href="https://github.com/bashtage/sphinx-material/">Material for
+              Sphinx</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="_static/javascripts/application.js"></script>
+  <script>app.initialize({version: "1.0.4", url: {base: ".."}})</script>
+  </body>
+</html>
